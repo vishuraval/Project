@@ -1,0 +1,88 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "console-recorder"
+Description: ""
+Resources:
+    ec291f5738:
+        Type: "AWS::EC2::VPC"
+        Properties:
+            CidrBlock: "10.0.0.0/16"
+            InstanceTenancy: "default"
+
+    ec2d278df4:
+        Type: "AWS::EC2::Subnet"
+        Properties:
+            VpcId: "vpc-0734327f6710988e4"
+            CidrBlock: "10.0.0.1/32"
+            AvailabilityZone: "us-east-2a"
+
+    ec25dcd0dd:
+        Type: "AWS::EC2::Subnet"
+        Properties:
+            VpcId: "vpc-0734327f6710988e4"
+            CidrBlock: "10.0.32.0/24"
+            AvailabilityZone: "us-east-2a"
+
+    ec2e546594:
+        Type: "AWS::EC2::Subnet"
+        Properties:
+            VpcId: "vpc-0734327f6710988e4"
+            CidrBlock: "10.0.64.0/24"
+
+    ec2fa612be:
+                Type: "AWS::EC2::InternetGateway"
+
+    ec2cabad3b:
+        Type: "AWS::EC2::SubnetRouteTableAssociation"
+        Properties:
+            SubnetId: "subnet-033c5d210cc432f69"
+            RouteTableId: "rtb-0cb991b2b5f6b1842"
+
+    ec227d8d40:
+        Type: "AWS::EC2::RouteTable"
+        Properties:
+            VpcId: "vpc-0734327f6710988e4"
+
+    ec2a546203:
+        Type: "AWS::EC2::VPCGatewayAttachment"
+        Properties:
+            VpcId: "vpc-0734327f6710988e4"
+            InternetGatewayId: "igw-0ec6683fb5170202d"
+
+    ec29bab734:
+        Type: "AWS::EC2::SecurityGroup"
+        Properties:
+            GroupDescription: "launch-wizard-1 created 2019-12-27T22:50:55.305-05:00"
+            GroupName: "launch-wizard-1"
+            VpcId: "vpc-0734327f6710988e4"
+
+    ec24bb948d:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-0dacb0c129b49f529"
+            KeyName: "touchproject"
+            InstanceType: "t2.micro"
+            Tenancy: "default"
+            Monitoring: false
+            DisableApiTermination: false
+            InstanceInitiatedShutdownBehavior: "stop"
+            CreditSpecification: 
+                CPUCredits: "standard"
+            EbsOptimized: false
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/xvda"
+                Ebs: 
+                    VolumeSize: 8
+                    DeleteOnTermination: true
+                    VolumeType: "gp2"
+            NetworkInterfaces: 
+              - 
+                DeviceIndex: 0
+                Description: "Primary network interface"
+                DeleteOnTermination: true
+                SubnetId: "subnet-033c5d210cc432f69"
+                Ipv6AddressCount: 0
+                GroupSet: 
+                  - "sg-02954acbd16f8cc4c"
+
