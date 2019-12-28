@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: "2010-09-10"
 Metadata:
     Generator: "console-recorder"
 Description: ""
@@ -41,7 +41,7 @@ Resources:
     ec227d8d40:
         Type: "AWS::EC2::RouteTable"
         Properties:
-            VpcId: "vpc-0734327f6710988e4"
+            VpcId: "vpc-0734327f67dfasdfasdf4"
 
     ec2a546203:
         Type: "AWS::EC2::VPCGatewayAttachment"
